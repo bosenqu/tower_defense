@@ -25,14 +25,13 @@ namespace TowerDefense
             this.placement = placement;
         }
 
-        public bool mouseClick(MouseEventArgs e)
+        public int mouseClick(MouseEventArgs e, int playerMoney)
         {
-            bool addResponse = false;
             if(clickBox.Contains(e.Location))
             {
-                addResponse = placement.add(clickBox);
+               placement.add(clickBox);
             }
-            return addResponse;
+            return 0;
         }
 
         public void paint(PaintEventArgs e)
