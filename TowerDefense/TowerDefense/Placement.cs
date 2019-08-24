@@ -17,6 +17,7 @@ namespace TowerDefense
         //moving item
         bool active = false;
         Rectangle tempItem;
+        public bool Active { get { return active; } }
         
 
         public Placement(Point location, Size size, Size tileSize)
@@ -29,13 +30,13 @@ namespace TowerDefense
         public bool add(Rectangle toAdd)
         {
             if (active) return false;
-            tempItem.Location = placementLocation(toAdd.Location, toAdd.Size);
+            tempItem.Location = screenLocation(toAdd.Location, toAdd.Size);
             tempItem.Size = tileSize;
             active = true;
             return true;
         }
 
-        Point placementLocation(Point p, Size itemSize)
+        Point screenLocation(Point p, Size itemSize)
         {
             int x = p.X - (p.X - mapLocation.X) % tileSize.Width;
             if (x > mapLocation.X + mapSize.Width - itemSize.Width) x = mapLocation.X + mapSize.Width - itemSize.Width;
@@ -48,27 +49,28 @@ namespace TowerDefense
             return new Point(x, y);
         }
 
-        bool noItems(Rectangle rect, List<Weapons> items)
+        bool noItems(Rectangle rect, List<Weapons> items, Map map)
         {
             for (int i = 0; i < items.Count; i++) if (items[i].Rect.IntersectsWith(rect)) return false;
-            return true;
+            return map.canPlace(rect);
         }
 
-        public void mouseClick(MouseEventArgs e, Player player)
+        public void mouseClick(MouseEventArgs e, Player player, Map map)
         {
-            if(active && noItems(tempItem, player.Items))
+            if(active && noItems(tempItem, player.Items, map))
             {
                 active = !player.addWeapon(Weapons.Type.SmallTurrent, tempItem);
+                map.changeTileType(tempItem, Map.TileType.obstacle);
             }
         }
 
-        public Point mouseMove(MouseEventArgs e)
+        public bool mouseMove(MouseEventArgs e)
         {
             if(active)
             {
-                tempItem.Location = placementLocation(e.Location, tempItem.Size);
+                tempItem.Location = screenLocation(e.Location, tempItem.Size);
             }
-            return tempItem.Location;
+            return active;
         }
 
         public void paint(PaintEventArgs e)

@@ -39,7 +39,7 @@ namespace TowerDefense
             gamePlacement = new Placement(gameMap.MapRect.Location, gameMap.MapRect.Size, gameMap.TileSize);
             gameButtonArea = new ButtonArea(new Point(CLIENT_WIDTH - GAME_BUTTON_AREA_WIDTH, 0), new Size(GAME_BUTTON_AREA_WIDTH, CLIENT_HEIGHT), gamePlacement);
             //initialize player
-            player = new TowerDefense.Player(50, 10);   
+            player = new Player(50, 10);   
         }
 
         void GameLoop()
@@ -51,14 +51,14 @@ namespace TowerDefense
         {
             base.OnPaint(e);
             gameButtonArea.paint(e);
-            gameMap.paint(e);
+            gameMap.paint(e, gamePlacement.Active);
             gamePlacement.paint(e);
             player.paint(e);       
         }
 
         private void Main_MouseClick(object sender, MouseEventArgs e)
         {
-            gamePlacement.mouseClick(e, player);
+            gamePlacement.mouseClick(e, player, gameMap);
             gameButtonArea.mouseClick(e, 500);          
         }
 

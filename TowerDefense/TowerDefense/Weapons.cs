@@ -10,7 +10,7 @@ namespace TowerDefense
 {
     class Weapons
     {
-        public enum Type { SmallTurrent, MidTurrent, Missile};
+        public enum Type { SmallTurrent, MidTurrent, Missile };
         Rectangle rect;
         public Rectangle Rect { get { return rect; } }
 
@@ -20,7 +20,7 @@ namespace TowerDefense
             rect.Size = size;
         }
 
-        public virtual void paint(PaintEventArgs e)
+        public void paint(PaintEventArgs e)
         {
             Pen redPen = new Pen(Color.Red, 3);
             SolidBrush blueBrush = new SolidBrush(Color.Blue);

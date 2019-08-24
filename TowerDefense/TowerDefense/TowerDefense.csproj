@@ -69,6 +69,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -82,6 +83,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile023.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile025.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile026.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile043.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile046.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile047.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile131.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile132.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile135.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile136.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile137.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\towerDefense_tile162 - Copy.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
