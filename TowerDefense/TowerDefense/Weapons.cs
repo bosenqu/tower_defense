@@ -45,9 +45,9 @@ namespace TowerDefense
         }
     }
 
-    class Missile : Weapons
+    class MissileTurrent : Weapons
     {
-        public Missile(Point location, Size size) : base(location, size)
+        public MissileTurrent(Point location, Size size) : base(location, size)
         {
 
         }

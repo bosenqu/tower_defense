@@ -10,7 +10,7 @@ namespace TowerDefense
 {
     class Player
     {
-        const int SMALL_TURRENT_COST = 0, MID_TURRENT_COST = 0, MISSILE_COST = 0;
+        const int SMALL_TURRENT_COST = 0, MID_TURRENT_COST = 0, MISSILE_TURRENT_COST = 0;
         int money;
         public int Money { get { return money; } }
         int health;
@@ -40,11 +40,11 @@ namespace TowerDefense
                 money -= MID_TURRENT_COST;
                 return true;
             }
-            if (type == Weapons.Type.Missile && money >= MISSILE_COST)
+            if (type == Weapons.Type.Missile && money >= MISSILE_TURRENT_COST)
             {
-                Missile temp = new Missile(rect.Location, rect.Size);
+                MissileTurrent temp = new MissileTurrent(rect.Location, rect.Size);
                 items.Add(temp);
-                money -= MISSILE_COST;
+                money -= MISSILE_TURRENT_COST;
                 return true;
             }
             return false;

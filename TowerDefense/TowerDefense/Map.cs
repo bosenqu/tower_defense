@@ -17,13 +17,15 @@ namespace TowerDefense
         Point location;
         public Rectangle MapRect { get { return new Rectangle(location, new Size(size.Width * TILE_WIDTH, size.Height * TILE_HEIGHT)); } }
         Tile[,] tiles;
+        Path path;
+        public Path Path { get { return path; } }
 
         public Map(Point location, Size size)
         {
             this.location = location;
             this.size.Width = size.Width / TILE_WIDTH;
             this.size.Height = size.Height / TILE_HEIGHT;
-            tiles = new Tile[size.Height, size.Width];
+            tiles = new Tile[size.Width, size.Height];
             generateMap();
         }
 
@@ -36,9 +38,25 @@ namespace TowerDefense
                     Rectangle temp = new Rectangle();
                     temp.Size = new Size(TILE_WIDTH, TILE_HEIGHT);
                     temp.Location = new Point(location.X + i * TILE_WIDTH, location.Y + j * TILE_HEIGHT);
-                    tiles[i, j] = new Tile(temp, TileType.grass, Properties.Resources.grass);
+                    if(j != 10 && j != 11)
+                    {
+                        tiles[i, j] = new Tile(temp, TileType.grass, Properties.Resources.grass);
+                    }
+                    else if(j == 10)
+                    {
+                        tiles[i, j] = new Tile(temp, TileType.road, Properties.Resources.roadUp);
+                    }
+                    else
+                    {
+                        tiles[i, j] = new Tile(temp, TileType.road, Properties.Resources.roadDown);
+                    }
                 }
             }
+        }
+
+        void generatePath()
+        {
+
         }
 
         public Point mapLocation(Point screenLocation)
