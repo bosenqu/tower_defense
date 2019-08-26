@@ -46,6 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonArea.cs" />
+    <Compile Include="EnemyControl.cs" />
+    <Compile Include="Graphics.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

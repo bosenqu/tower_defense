@@ -24,6 +24,17 @@ namespace TowerDefense
             this.health = health;
         }
 
+        public int addMoney (int addAmount)
+        {
+            money += addAmount;
+            return money;
+        }
+
+        public int loseOneHealth ()
+        {
+            return --health;
+        }
+
         public bool addWeapon(Weapons.Type type, Rectangle rect)
         {
             if (type == Weapons.Type.SmallTurrent && money >= SMALL_TURRENT_COST)

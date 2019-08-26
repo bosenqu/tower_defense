@@ -59,6 +59,11 @@ namespace TowerDefense
 
         }
 
+        public bool inMap(Rectangle rect)
+        {
+            return rect.IntersectsWith(MapRect);
+        }
+
         public Point mapLocation(Point screenLocation)
         {
             int x = (screenLocation.X - location.X) / TILE_WIDTH;
@@ -104,10 +109,10 @@ namespace TowerDefense
         public Rectangle Rect { get { return rect; } }
         Map.TileType type;
         public Map.TileType Type { get { return type; } }
-        Bitmap image;
-        public Bitmap Image { get { return image; } }
+        Image image;
+        public Image Image { get { return image; } }
 
-        public Tile(Rectangle rect, Map.TileType type, Bitmap image)
+        public Tile(Rectangle rect, Map.TileType type, Image image)
         {
             this.rect = rect;
             this.type = type;

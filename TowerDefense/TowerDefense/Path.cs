@@ -28,13 +28,27 @@ namespace TowerDefense
             this.turningPoints = turningPoints;
         }
 
-        public Direction currentDirection(Rectangle rect)
+        public Direction currentDirection(Rectangle rect, Direction currentDirection, int speed)
         {
             foreach (var tp in turningPoints)
             {
-                if (rect.Contains(tp.ScreenLocation))
+                Point p = Graphics.center(rect);
+                switch (currentDirection)
                 {
-                    return tp.NewDirection;
+                    case Direction.Down:
+                        if (p.X == tp.ScreenLocation.X && p.Y >= tp.ScreenLocation.Y && p.Y < tp.ScreenLocation.Y + speed) return tp.NewDirection;
+                        break;
+                    case Direction.Up:
+                        if (p.X == tp.ScreenLocation.X && p.Y <= tp.ScreenLocation.Y && p.Y > tp.ScreenLocation.Y - speed) return tp.NewDirection;
+                        break;
+                    case Direction.Left:
+                        if (p.Y == tp.ScreenLocation.Y && p.X <= tp.ScreenLocation.X && p.X > tp.ScreenLocation.X - speed) return tp.NewDirection;
+                        break;
+                    case Direction.Right:
+                        if (p.Y == tp.ScreenLocation.Y && p.X >= tp.ScreenLocation.X && p.X < tp.ScreenLocation.X + speed) return tp.NewDirection;
+                        break;
+                    default:
+                        break;
                 }
             }
             return Direction.None;
